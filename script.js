@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypingEffect();
   initCounters();
   initNavScroll();
+  initLiquidNavPill();
   initMobileDrawer();
   initSkillsFilter();
   initProjectsFilter();
@@ -154,6 +155,20 @@ function initAmbientCanvas() {
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
+
+    // Subtle liquid light ripple pool under mouse
+    if (mouse.x !== null && mouse.y !== null) {
+      const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+      const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 180);
+      grad.addColorStop(0, isDark ? 'rgba(6, 182, 212, 0.14)' : 'rgba(99, 102, 241, 0.08)');
+      grad.addColorStop(0.5, isDark ? 'rgba(99, 102, 241, 0.07)' : 'rgba(6, 182, 212, 0.04)');
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, 180, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
     for (let i = 0; i < particles.length; i++) {
       particles[i].update();
       particles[i].draw();
@@ -177,6 +192,7 @@ function initCustomCursor() {
 
   let mouseX = -100, mouseY = -100;
   let outlineX = -100, outlineY = -100;
+  let lastX = -100, lastY = -100;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
@@ -185,9 +201,21 @@ function initCustomCursor() {
   });
 
   function animateOutline() {
-    outlineX += (mouseX - outlineX) * 0.15;
-    outlineY += (mouseY - outlineY) * 0.15;
-    outline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
+    outlineX += (mouseX - outlineX) * 0.16;
+    outlineY += (mouseY - outlineY) * 0.16;
+
+    // Fluid liquid droplet squish and stretch physics
+    const vx = mouseX - lastX;
+    const vy = mouseY - lastY;
+    lastX = mouseX;
+    lastY = mouseY;
+
+    const speed = Math.hypot(vx, vy);
+    const stretch = Math.min(speed * 0.015, 0.45);
+    const angle = Math.atan2(vy, vx) * (180 / Math.PI);
+
+    outline.style.transform = `translate(${outlineX}px, ${outlineY}px) rotate(${angle}deg) scale(${1 + stretch}, ${1 - stretch * 0.6})`;
+
     requestAnimationFrame(animateOutline);
   }
   animateOutline();
@@ -326,6 +354,7 @@ function initNavScroll() {
           link.classList.remove('active');
           if (link.getAttribute('href') === `#${id}`) {
             link.classList.add('active');
+            if (window.updateLiquidNavPill) window.updateLiquidNavPill();
           }
         });
       }
@@ -337,6 +366,50 @@ function initNavScroll() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+}
+
+/* ==========================================================================
+   6B. LIQUID NAVIGATION CAPSULE PILL
+   ========================================================================== */
+function initLiquidNavPill() {
+  const navList = document.getElementById('nav-list');
+  const pill = document.getElementById('nav-liquid-pill');
+  const links = document.querySelectorAll('.nav-link');
+
+  if (!navList || !pill || !links.length) return;
+
+  function movePillTo(element) {
+    if (!element) {
+      pill.style.opacity = '0';
+      return;
+    }
+    const listRect = navList.getBoundingClientRect();
+    const linkRect = element.getBoundingClientRect();
+
+    const left = linkRect.left - listRect.left;
+    const width = linkRect.width;
+
+    pill.style.left = `${left}px`;
+    pill.style.width = `${width}px`;
+    pill.style.opacity = '1';
+  }
+
+  links.forEach((link) => {
+    link.addEventListener('mouseenter', () => movePillTo(link));
+  });
+
+  navList.addEventListener('mouseleave', () => {
+    const activeLink = document.querySelector('.nav-link.active');
+    movePillTo(activeLink);
+  });
+
+  const activeLink = document.querySelector('.nav-link.active') || links[0];
+  setTimeout(() => movePillTo(activeLink), 300);
+
+  window.updateLiquidNavPill = () => {
+    const active = document.querySelector('.nav-link.active');
+    if (active) movePillTo(active);
+  };
 }
 
 /* ==========================================================================
