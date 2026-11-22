@@ -192,29 +192,39 @@ function initCustomCursor() {
 
   let mouseX = -100, mouseY = -100;
   let outlineX = -100, outlineY = -100;
-  let lastX = -100, lastY = -100;
+  let prevMouseX = -100, prevMouseY = -100;
+  let currentSpeed = 0;
+  let currentAngle = 0;
+  let targetSpeed = 0;
+  let targetAngle = 0;
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    const vx = e.clientX - prevMouseX;
+    const vy = e.clientY - prevMouseY;
+    prevMouseX = mouseX = e.clientX;
+    prevMouseY = mouseY = e.clientY;
     dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+
+    const rawSpeed = Math.hypot(vx, vy);
+    targetSpeed = Math.min(rawSpeed * 0.02, 0.4);
+    if (rawSpeed > 1) {
+      targetAngle = Math.atan2(vy, vx) * (180 / Math.PI);
+    }
   });
 
   function animateOutline() {
-    outlineX += (mouseX - outlineX) * 0.16;
-    outlineY += (mouseY - outlineY) * 0.16;
+    outlineX += (mouseX - outlineX) * 0.18;
+    outlineY += (mouseY - outlineY) * 0.18;
 
-    // Fluid liquid droplet squish and stretch physics
-    const vx = mouseX - lastX;
-    const vy = mouseY - lastY;
-    lastX = mouseX;
-    lastY = mouseY;
+    currentSpeed += (targetSpeed - currentSpeed) * 0.14;
+    targetSpeed *= 0.88;
 
-    const speed = Math.hypot(vx, vy);
-    const stretch = Math.min(speed * 0.015, 0.45);
-    const angle = Math.atan2(vy, vx) * (180 / Math.PI);
+    let diff = (targetAngle - currentAngle) % 360;
+    if (diff > 180) diff -= 360;
+    if (diff < -180) diff += 360;
+    currentAngle += diff * 0.14;
 
-    outline.style.transform = `translate(${outlineX}px, ${outlineY}px) rotate(${angle}deg) scale(${1 + stretch}, ${1 - stretch * 0.6})`;
+    outline.style.transform = `translate(${outlineX}px, ${outlineY}px) rotate(${currentAngle.toFixed(1)}deg) scale(${(1 + currentSpeed).toFixed(3)}, ${(1 - currentSpeed * 0.45).toFixed(3)})`;
 
     requestAnimationFrame(animateOutline);
   }
@@ -389,7 +399,7 @@ function initLiquidNavPill() {
     const left = linkRect.left - listRect.left;
     const width = linkRect.width;
 
-    pill.style.left = `${left}px`;
+    pill.style.transform = `translateX(${left}px)`;
     pill.style.width = `${width}px`;
     pill.style.opacity = '1';
   }
@@ -932,43 +942,63 @@ function initLiquidTiltAndGlare() {
   if (window.innerWidth <= 768) return;
 
   const tiltTargets = document.querySelectorAll(
-    '.glass-panel, .project-card, .skill-card, .avatar-card, .feature-card, .testimonial-card'
+    '.project-card, .skill-card, .avatar-card, .feature-card, .testimonial-card, .about-story-card'
   );
 
   tiltTargets.forEach((card) => {
-    let bounds;
+    let rect = null;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isHovering = false;
+    let rafId = null;
 
-    function onMouseEnter() {
-      bounds = card.getBoundingClientRect();
-      card.style.transition = 'transform 0.1s ease-out, box-shadow 0.25s ease';
+    function renderTilt() {
+      if (!isHovering && Math.abs(currentX) < 0.05 && Math.abs(currentY) < 0.05) {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)';
+        cancelAnimationFrame(rafId);
+        rafId = null;
+        return;
+      }
+
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+
+      card.style.transform = `perspective(1000px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg) translateY(-4px) scale3d(1.015, 1.015, 1.015)`;
+
+      rafId = requestAnimationFrame(renderTilt);
     }
 
-    function onMouseMove(e) {
-      if (!bounds) bounds = card.getBoundingClientRect();
-      const mouseX = e.clientX - bounds.left;
-      const mouseY = e.clientY - bounds.top;
+    card.addEventListener('mouseenter', () => {
+      isHovering = true;
+      rect = card.getBoundingClientRect();
+      card.style.transition = 'box-shadow 0.35s ease, border-color 0.35s ease';
+      if (!rafId) rafId = requestAnimationFrame(renderTilt);
+    });
 
-      // Update liquid glare CSS variables
+    card.addEventListener('mousemove', (e) => {
+      if (!rect) rect = card.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
       card.style.setProperty('--mouse-x', `${mouseX}px`);
       card.style.setProperty('--mouse-y', `${mouseY}px`);
 
-      // Calculate 3D tilt angles
-      const centerX = bounds.width / 2;
-      const centerY = bounds.height / 2;
-      const tiltX = ((mouseY - centerY) / centerY) * -5.5;
-      const tiltY = ((mouseX - centerX) / centerX) * 5.5;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      targetX = ((mouseY - centerY) / centerY) * -5.2;
+      targetY = ((mouseX - centerX) / centerX) * 5.2;
 
-      card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateY(-5px) scale3d(1.015, 1.015, 1.015)`;
-    }
+      if (!rafId) rafId = requestAnimationFrame(renderTilt);
+    });
 
-    function onMouseLeave() {
-      card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease';
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)';
-    }
-
-    card.addEventListener('mouseenter', onMouseEnter);
-    card.addEventListener('mousemove', onMouseMove);
-    card.addEventListener('mouseleave', onMouseLeave);
+    card.addEventListener('mouseleave', () => {
+      isHovering = false;
+      targetX = 0;
+      targetY = 0;
+      rect = null;
+    });
   });
 }
 
