@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maruf | Creative Technologist & Full-Stack Engineer</title>
+  <meta name="description" content="Portfolio of Maruf, a creative technologist, full-stack engineer, and UI/UX architect crafting modern web experiences.">
+  <meta name="keywords" content="Portfolio, Full Stack Developer, Software Engineer, UI/UX, Web Design, JavaScript, React, Python">
+  <meta name="author" content="Maruf">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Maruf | Creative Technologist & Full-Stack Engineer">
+  <meta property="og:description" content="Building scalable web applications, sleek user interfaces, and next-gen digital experiences.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Canvas for Subtle Particle & Ambient Glow Effect -->
+  <canvas id="ambient-canvas"></canvas>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <!-- Custom Cursor Dot & Ring (Desktop) -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-outline" id="cursor-outline"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <!-- Header Logo with High-Tech Magnetic Emblem -->
+      <a href="#hero" class="brand-logo" aria-label="Maruf Portfolio Home">
+        <div class="logo-mark">
+          <div class="logo-mark-glow"></div>
+          <div class="logo-mark-inner">
+            <svg class="logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#06b6d4" />
+                  <stop offset="50%" stop-color="#6366f1" />
+                  <stop offset="100%" stop-color="#ec4899" />
+                </linearGradient>
+                <linearGradient id="headerFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.22" />
+                  <stop offset="100%" stop-color="#6366f1" stop-opacity="0.08" />
+                </linearGradient>
+              </defs>
+              <rect x="2.5" y="2.5" width="37" height="37" rx="11" fill="url(#headerFill)" stroke="url(#headerGrad)" stroke-width="1.8" class="logo-svg-border" />
+              <path d="M12 29V14.5L21 23.5L30 14.5V29" stroke="url(#headerGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="logo-svg-m" />
+              <circle cx="21" cy="14" r="2.2" fill="#38bdf8" class="logo-svg-spark" />
+            </svg>
+          </div>
+        </div>
+        <div class="logo-details">
+          <span class="logo-name">MARUF<span class="logo-dot"></span></span>
+          <span class="logo-badge">DEV / STUDIO</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+          <li class="nav-item"><a href="#terminal-section" class="nav-link">Terminal</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Items (Theme Toggle & CTA) -->
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Light and Dark Mode" title="Toggle theme">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+
+        <!-- Let's Talk CTA -->
+        <a href="#contact" class="btn btn-sm btn-outline header-cta">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open Navigation Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <div class="logo-mark">
+          <div class="logo-mark-glow"></div>
+          <div class="logo-mark-inner">
+            <svg class="logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="drawerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#06b6d4" />
+                  <stop offset="50%" stop-color="#6366f1" />
+                  <stop offset="100%" stop-color="#ec4899" />
+                </linearGradient>
+                <linearGradient id="drawerFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.22" />
+                  <stop offset="100%" stop-color="#6366f1" stop-opacity="0.08" />
+                </linearGradient>
+              </defs>
+              <rect x="2.5" y="2.5" width="37" height="37" rx="11" fill="url(#drawerFill)" stroke="url(#drawerGrad)" stroke-width="1.8" class="logo-svg-border" />
+              <path d="M12 29V14.5L21 23.5L30 14.5V29" stroke="url(#drawerGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="logo-svg-m" />
+              <circle cx="21" cy="14" r="2.2" fill="#38bdf8" class="logo-svg-spark" />
+            </svg>
+          </div>
+        </div>
+        <div class="logo-details">
+          <span class="logo-name">MARUF<span class="logo-dot"></span></span>
+          <span class="logo-badge">DEV / STUDIO</span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" id="drawer-close" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+      <li><a href="#about" class="mobile-nav-link">About Me</a></li>
+      <li><a href="#skills" class="mobile-nav-link">Tech Stack</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Selected Works</a></li>
+      <li><a href="#experience" class="mobile-nav-link">Career Path</a></li>
+      <li><a href="#terminal-section" class="mobile-nav-link">Dev Console</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Get In Touch</a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <a href="#contact" class="btn btn-primary btn-block">Start a Project</a>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- Main Content Area -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <!-- Status Pill -->
+          <div class="status-pill">
+            <span class="status-indicator">
+              <span class="status-ping"></span>
+              <span class="status-core"></span>
+            </span>
+            <span class="status-text">Available for select projects & roles</span>
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Maruf</span>.<br>
+            Architecting <span class="typing-text" id="typing-text"></span><span class="typing-cursor">|</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            A versatile Full-Stack Engineer & Creative UI/UX Architect with a passion for designing fast, resilient, and visually captivating digital products that transform ideas into reality.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-cubes"></i>
+              <span>Explore Projects</span>
+            </a>
+            <a href="#contact" class="btn btn-glass">
+              <i class="fa-regular fa-paper-plane"></i>
+              <span>Hire Me</span>
+            </a>
+            <a href="#terminal-section" class="btn btn-icon-only" title="Open Interactive Terminal" aria-label="Open Interactive Terminal">
+              <i class="fa-solid fa-terminal"></i>
+            </a>
+          </div>
+
+          <!-- Quick Stats Banner -->
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+              <span class="stat-label">Years of Craft</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-card">
+              <span class="stat-number" data-target="45">0</span><span class="stat-plus">+</span>
+              <span class="stat-label">Projects Completed</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-card">
+              <span class="stat-number" data-target="99">0</span><span class="stat-plus">%</span>
+              <span class="stat-label">Client Happiness</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="hero-visual">
+          <div class="avatar-card">
+            <div class="avatar-glow"></div>
+            <div class="avatar-frame">
+              <img src="assets/profile.jpg" alt="Maruf Portrait" class="avatar-img" />
+              <div class="avatar-overlay"></div>
+            </div>
+
+            <!-- Floating Badge 1: Tech Focus -->
+            <div class="floating-badge badge-top-right">
+              <div class="badge-icon react-icon">
+                <i class="fa-brands fa-react fa-spin" style="--fa-animation-duration: 12s;"></i>
+              </div>
+              <div class="badge-content">
+                <span class="badge-title">Modern Stack</span>
+                <span class="badge-desc">React, Node, TypeScript</span>
+              </div>
+            </div>
+
+            <!-- Floating Badge 2: Performance -->
+            <div class="floating-badge badge-bottom-left">
+              <div class="badge-icon speed-icon">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div class="badge-content">
+                <span class="badge-title">Lightning Speed</span>
+                <span class="badge-desc">100/100 Lighthouse</span>
+              </div>
+            </div>
+
+            <!-- Floating Badge 3: Code Passion -->
+            <div class="floating-badge badge-bottom-right">
+              <div class="badge-icon code-icon">
+                <i class="fa-solid fa-code-commit"></i>
+              </div>
+              <div class="badge-content">
+                <span class="badge-title">Clean Code</span>
+                <span class="badge-desc">Scalable & Modular</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <div class="scroll-down-hint">
+        <a href="#about" aria-label="Scroll to about section">
+          <span class="mouse-icon">
+            <span class="mouse-wheel"></span>
+          </span>
+          <span class="scroll-text">Scroll to explore</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-regular fa-user"></i> Who I Am</span>
+          <h2 class="section-title">Driven by passion, engineered for precision</h2>
+          <p class="section-desc">Bridging the gap between creative visual artistry and robust engineering logic.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-story-card glass-panel">
+            <h3 class="card-heading">
+              <i class="fa-solid fa-compass-drafting text-gradient"></i> My Philosophy
+            </h3>
+            <p>
+              I believe great software is more than lines of code; it is an intuitive extension of human thought. Over the past 5 years, I have worked across the stack—from designing high-fidelity design systems to building resilient distributed backend microservices.
+            </p>
+            <p>
+              Whether tuning WebGL animations for 60fps fluidity or structuring zero-downtime database migrations, my ultimate goal is to deliver an unforgettable user experience that drives measurable impact.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <i class="fa-solid fa-check-circle highlight-icon"></i>
+                <span>Human-centric UI/UX design architecture</span>
+              </div>
+              <div class="highlight-item">
+                <i class="fa-solid fa-check-circle highlight-icon"></i>
+                <span>High-throughput, clean REST & GraphQL APIs</span>
+              </div>
+              <div class="highlight-item">
+                <i class="fa-solid fa-check-circle highlight-icon"></i>
+                <span>Cloud infrastructure & CI/CD deployment automation</span>
+              </div>
+              <div class="highlight-item">
+                <i class="fa-solid fa-check-circle highlight-icon"></i>
+                <span>Continuous experimentation with AI & Interactive Web</span>
+              </div>
+            </div>
+
+            <div class="about-download-cta">
+              <a href="#contact" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Download Resume</span>
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-chip">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-chip">
+                <i class="fa-brands fa-linkedin"></i> LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <div class="about-features-column">
+            <!-- Feature Card 1 -->
+            <div class="feature-card glass-panel">
+              <div class="feature-icon-box icon-purple">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+              <div class="feature-body">
+                <h4>Frontend Craftsmanship</h4>
+                <p>Creating modular, responsive, and accessible web experiences utilizing modern standards, semantic markup, and dynamic animations.</p>
+              </div>
+            </div>
+
+            <!-- Feature Card 2 -->
+            <div class="feature-card glass-panel">
+              <div class="feature-icon-box icon-blue">
+                <i class="fa-solid fa-server"></i>
+              </div>
+              <div class="feature-body">
+                <h4>Rock-Solid Backend Architecture</h4>
+                <p>Designing scalable backend engines, secure auth systems, and low-latency databases built for millions of queries.</p>
+              </div>
+            </div>
+
+            <!-- Feature Card 3 -->
+            <div class="feature-card glass-panel">
+              <div class="feature-icon-box icon-cyan">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <div class="feature-body">
+                <h4>Modern AI & Edge Tooling</h4>
+                <p>Integrating LLMs, modern toolchains, and edge computing to turn conventional interfaces into intelligent co-pilots.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-code"></i> Tech Ecosystem</span>
+          <h2 class="section-title">The tools I use to build the future</h2>
+          <p class="section-desc">Constantly evolving, always choosing the best tool for the job.</p>
+        </div>
+
+        <!-- Skills Category Tabs -->
+        <div class="skills-tabs">
+          <button class="skill-tab-btn active" data-filter="all">All Tools</button>
+          <button class="skill-tab-btn" data-filter="frontend">Frontend & UI</button>
+          <button class="skill-tab-btn" data-filter="backend">Backend & DB</button>
+          <button class="skill-tab-btn" data-filter="devops">DevOps & Cloud</button>
+          <button class="skill-tab-btn" data-filter="design">Design & Tools</button>
+        </div>
+
+        <!-- Skills Grid Container -->
+        <div class="skills-grid" id="skills-grid">
+          <!-- Skill Item: HTML5 / CSS3 -->
+          <div class="skill-card glass-panel" data-category="frontend">
+            <div class="skill-card-top">
+              <div class="skill-logo icon-html">
+                <i class="fa-brands fa-html5"></i>
+              </div>
+              <span class="skill-level">98%</span>
+            </div>
+            <h4 class="skill-name">HTML5 / Modern CSS</h4>
+            <p class="skill-desc">Semantic HTML, Flexbox, Grid, Custom Properties, Responsive Layouts</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 98%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill Item: JavaScript / TypeScript -->
+          <div class="skill-card glass-panel" data-category="frontend">
+            <div class="skill-card-top">
+              <div class="skill-logo icon-js">
+                <i class="fa-brands fa-js"></i>
+              </div>
+              <span class="skill-level">95%</span>
+            </div>
+            <h4 class="skill-name">JavaScript & TypeScript</h4>
+            <p class="skill-desc">ESNext, Strict Typing, Async/Await, Web APIs, DOM Mastery</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill Item: React & Next.js -->
+          <div class="skill-card glass-panel" data-category="frontend">
+            <div class="skill-card-top">
+              <div class="skill-logo icon-react">
+                <i class="fa-brands fa-react"></i>
+              </div>
+              <span class="skill-level">92%</span>
+            </div>
+            <h4 class="skill-name">React & Next.js</h4>
+            <p class="skill-desc">Server Components, Hooks, State Management (Zustand/Redux), SSR</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 92%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill Item: Node.js & Express -->
+          <div class="skill-card glass-panel" data-category="backend">
+            <div class="skill-card-top">
+              <div class="skill-logo icon-node">
+                <i class="fa-brands fa-node-js"></i>
+              </div>
+              <span class="skill-level">90%</span>
+            </div>
+            <h4 class="skill-name">Node.js & Express</h4>
+            <p class="skill-desc">Event Loop, RESTful Endpoints, Middleware, Stream Processing</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill Item: Python & FastAPI -->
+          <div class="skill-card glass-panel" data-category="backend">
+            <div class="skill-card-top">
+              <div class="skill-logo icon-python">
+                <i class="fa-brands fa-python"></i>
+              </div>
+              <span class="skill-level">88%</span>
+            </div>
+            <h4 class="skill-name">Python & FastAPI</h4>
+            <p class="skill-desc">High-speed APIs, Asynchronous tasks, Data Pipelines, AI Tooling</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 88%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill Item: PostgreSQL & Mongo -->
+          <div class="skill-card glass-panel" data-category="backend">
+            <div class="skill-card-top">
+              <div class="skill-logo icon-db">
+                <i class="fa-solid fa-database"></i>
+              </div>
+              <span class="skill-level">86%</span>
+            </div>
+            <h4 class="skill-name">PostgreSQL & MongoDB</h4>
+            <p class="skill-desc">Indexing, Relational Modeling, Prisma ORM, Query Optimization</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 86%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill Item: Docker & CI/CD -->
+          <div class="skill-card glass-panel" data-category="devops">
+            <div class="skill-card-top">
+              <div class="skill-logo icon-docker">
+                <i class="fa-brands fa-docker"></i>
+              </div>
+              <span class="skill-level">84%</span>
+            </div>
+            <h4 class="skill-name">Docker & GitHub Actions</h4>
+            <p class="skill-desc">Containerization, Multi-stage builds, Automated testing, Cloud deploys</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 84%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill Item: Figma & UI Design -->
+          <div class="skill-card glass-panel" data-category="design">
+            <div class="skill-card-top">
+              <div class="skill-logo icon-figma">
+                <i class="fa-brands fa-figma"></i>
+              </div>
+              <span class="skill-level">92%</span>
+            </div>
+            <h4 class="skill-name">Figma & Design Systems</h4>
+            <p class="skill-desc">Auto-layout, Design tokens, Component variants, Rapid prototyping</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 92%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marquee of Additional Tools -->
+        <div class="tools-marquee-wrapper">
+          <p class="marquee-title">Also proficient with:</p>
+          <div class="tools-pills-row">
+            <span class="tool-badge"><i class="fa-brands fa-git-alt"></i> Git</span>
+            <span class="tool-badge"><i class="fa-brands fa-aws"></i> AWS</span>
+            <span class="tool-badge"><i class="fa-solid fa-cloud"></i> Cloudflare</span>
+            <span class="tool-badge"><i class="fa-solid fa-cube"></i> Three.js</span>
+            <span class="tool-badge"><i class="fa-solid fa-shield-halved"></i> JWT & OAuth</span>
+            <span class="tool-badge"><i class="fa-solid fa-network-wired"></i> GraphQL</span>
+            <span class="tool-badge"><i class="fa-solid fa-vial"></i> Jest & Cypress</span>
+            <span class="tool-badge"><i class="fa-brands fa-sass"></i> Tailwind & SASS</span>
+            <span class="tool-badge"><i class="fa-brands fa-linux"></i> Linux CLI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-fire"></i> Portfolio Showcase</span>
+          <h2 class="section-title">Crafted with precision & purpose</h2>
+          <p class="section-desc">A curated selection of featured web applications, open-source projects, and client platforms.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="projects-filter-bar">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+          <button class="filter-btn" data-filter="frontend">Frontend & UI</button>
+          <button class="filter-btn" data-filter="ai">AI & Systems</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+          
+          <!-- Project 1: Zenith Analytics Dashboard -->
+          <article class="project-card glass-panel" data-category="fullstack" data-project-id="1">
+            <div class="project-thumb-container">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Zenith Analytics Dashboard" class="project-thumb">
+              <div class="project-overlay-links">
+                <button class="overlay-btn view-details-btn" data-id="1" aria-label="View Project Details">
+                  <i class="fa-solid fa-eye"></i> Details
+                </button>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+              <span class="project-featured-badge">Featured</span>
+            </div>
+
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-category">SaaS Platform</span>
+                <span class="project-year">2026</span>
+              </div>
+              <h3 class="project-title">Zenith Real-Time Analytics</h3>
+              <p class="project-excerpt">
+                A high-performance SaaS analytics suite providing real-time telemetry, visual funnels, and predictive user behavior models.
+              </p>
+              
+              <div class="project-tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">WebSocket</span>
+              </div>
+
+              <div class="project-footer">
+                <div class="project-metric">
+                  <i class="fa-solid fa-chart-line"></i> 50M+ events/day
+                </div>
+                <button class="btn-text view-details-btn" data-id="1">
+                  Learn more <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Aurora AI Workspace -->
+          <article class="project-card glass-panel" data-category="ai" data-project-id="2">
+            <div class="project-thumb-container">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Aurora AI Creative Engine" class="project-thumb">
+              <div class="project-overlay-links">
+                <button class="overlay-btn view-details-btn" data-id="2" aria-label="View Project Details">
+                  <i class="fa-solid fa-eye"></i> Details
+                </button>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-category">AI & Creative</span>
+                <span class="project-year">2025</span>
+              </div>
+              <h3 class="project-title">Aurora Generative Studio</h3>
+              <p class="project-excerpt">
+                An intelligent visual canvas integrating multi-modal LLMs to assist designers with real-time UI generation and accessibility audits.
+              </p>
+              
+              <div class="project-tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">OpenAI API</span>
+                <span class="tech-tag">Tailwind</span>
+              </div>
+
+              <div class="project-footer">
+                <div class="project-metric">
+                  <i class="fa-solid fa-users"></i> 12,000+ creators
+                </div>
+                <button class="btn-text view-details-btn" data-id="2">
+                  Learn more <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Nova Minimalist E-Commerce -->
+          <article class="project-card glass-panel" data-category="frontend" data-project-id="3">
+            <div class="project-thumb-container">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Nova E-Commerce" class="project-thumb">
+              <div class="project-overlay-links">
+                <button class="overlay-btn view-details-btn" data-id="3" aria-label="View Project Details">
+                  <i class="fa-solid fa-eye"></i> Details
+                </button>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-category">E-Commerce & 3D</span>
+                <span class="project-year">2025</span>
+              </div>
+              <h3 class="project-title">Nova Luxury Living Store</h3>
+              <p class="project-excerpt">
+                Headless shopping platform featuring interactive 3D product previews, instant page loads, and seamless Stripe payment integration.
+              </p>
+              
+              <div class="project-tech-tags">
+                <span class="tech-tag">Three.js</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Stripe API</span>
+                <span class="tech-tag">CSS Modules</span>
+              </div>
+
+              <div class="project-footer">
+                <div class="project-metric">
+                  <i class="fa-solid fa-bolt"></i> 99.8% Core Web Vitals
+                </div>
+                <button class="btn-text view-details-btn" data-id="3">
+                  Learn more <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Pulse DevOps & Cloud Monitor -->
+          <article class="project-card glass-panel" data-category="fullstack" data-project-id="4">
+            <div class="project-thumb-container">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Pulse Infrastructure Monitor" class="project-thumb">
+              <div class="project-overlay-links">
+                <button class="overlay-btn view-details-btn" data-id="4" aria-label="View Project Details">
+                  <i class="fa-solid fa-eye"></i> Details
+                </button>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-category">DevOps Suite</span>
+                <span class="project-year">2024</span>
+              </div>
+              <h3 class="project-title">Pulse Server & API Sentinel</h3>
+              <p class="project-excerpt">
+                Distributed server health monitoring tool with instant webhook triggers, latency graphing, and zero-overhead agent workers.
+              </p>
+              
+              <div class="project-tech-tags">
+                <span class="tech-tag">Go / Node</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Redis</span>
+                <span class="tech-tag">Chart.js</span>
+              </div>
+
+              <div class="project-footer">
+                <div class="project-metric">
+                  <i class="fa-solid fa-shield"></i> 99.99% Reliability
+                </div>
+                <button class="btn-text view-details-btn" data-id="4">
+                  Learn more <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5: NeuroFlow Mind Mapping UI -->
+          <article class="project-card glass-panel" data-category="frontend" data-project-id="5">
+            <div class="project-thumb-container">
+              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="NeuroFlow Knowledge Graph" class="project-thumb">
+              <div class="project-overlay-links">
+                <button class="overlay-btn view-details-btn" data-id="5" aria-label="View Project Details">
+                  <i class="fa-solid fa-eye"></i> Details
+                </button>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-category">Productivity Tool</span>
+                <span class="project-year">2024</span>
+              </div>
+              <h3 class="project-title">NeuroFlow Knowledge Canvas</h3>
+              <p class="project-excerpt">
+                Interactive node-based canvas for brainstorming and research mapping featuring infinite zoom, keyboard shortcuts, and Markdown support.
+              </p>
+              
+              <div class="project-tech-tags">
+                <span class="tech-tag">HTML5 Canvas</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">IndexedDB</span>
+                <span class="tech-tag">CSS3</span>
+              </div>
+
+              <div class="project-footer">
+                <div class="project-metric">
+                  <i class="fa-solid fa-star"></i> 4.9/5 Rating
+                </div>
+                <button class="btn-text view-details-btn" data-id="5">
+                  Learn more <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6: CyberShield Security Hub -->
+          <article class="project-card glass-panel" data-category="ai" data-project-id="6">
+            <div class="project-thumb-container">
+              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="CyberShield Security" class="project-thumb">
+              <div class="project-overlay-links">
+                <button class="overlay-btn view-details-btn" data-id="6" aria-label="View Project Details">
+                  <i class="fa-solid fa-eye"></i> Details
+                </button>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-category">Cybersecurity</span>
+                <span class="project-year">2024</span>
+              </div>
+              <h3 class="project-title">CyberShield Threat Radar</h3>
+              <p class="project-excerpt">
+                Real-time vulnerability detection dashboard monitoring package dependencies, open ports, and automated compliance reports.
+              </p>
+              
+              <div class="project-tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">Tailwind</span>
+              </div>
+
+              <div class="project-footer">
+                <div class="project-metric">
+                  <i class="fa-solid fa-lock"></i> SOC2 Ready
+                </div>
+                <button class="btn-text view-details-btn" data-id="6">
+                  Learn more <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION SECTION -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-briefcase"></i> Experience & Milestones</span>
+          <h2 class="section-title">My journey through tech</h2>
+          <p class="section-desc">Consistent growth, high-stakes ownership, and continuous learning.</p>
+        </div>
+
+        <div class="timeline-container">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot">
+              <div class="dot-inner"></div>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-badge">2024 — Present</div>
+              <h3 class="timeline-role">Lead Full-Stack Developer</h3>
+              <h4 class="timeline-company"><i class="fa-solid fa-building"></i> Vertex Digital Solutions</h4>
+              <p class="timeline-desc">
+                Architected high-scale web platforms supporting over 500,000 monthly active users. Mentored junior engineers, established TypeScript standards, and decreased initial page bundle size by 42%.
+              </p>
+              <div class="timeline-tags">
+                <span>React</span>
+                <span>TypeScript</span>
+                <span>Node.js</span>
+                <span>Next.js</span>
+                <span>AWS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot">
+              <div class="dot-inner"></div>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-badge">2022 — 2024</div>
+              <h3 class="timeline-role">Senior Frontend Engineer & UI Designer</h3>
+              <h4 class="timeline-company"><i class="fa-solid fa-building"></i> Hyperion Software Studio</h4>
+              <p class="timeline-desc">
+                Built scalable UI design systems with Figma tokens synced directly to CSS variables. Spearheaded the frontend redesign for 8 enterprise clients, lifting conversion rates by an average of 28%.
+              </p>
+              <div class="timeline-tags">
+                <span>Vue.js</span>
+                <span>Design Systems</span>
+                <span>CSS Architecture</span>
+                <span>GraphQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot">
+              <div class="dot-inner"></div>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-badge">2021 — 2022</div>
+              <h3 class="timeline-role">Full-Stack Web Developer</h3>
+              <h4 class="timeline-company"><i class="fa-solid fa-building"></i> Nexus Labs</h4>
+              <p class="timeline-desc">
+                Developed responsive web applications, secure REST APIs, and database migrations. Implemented end-to-end automated testing with Jest and Cypress.
+              </p>
+              <div class="timeline-tags">
+                <span>JavaScript</span>
+                <span>Express</span>
+                <span>MongoDB</span>
+                <span>Tailwind</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4 (Education) -->
+          <div class="timeline-item">
+            <div class="timeline-dot">
+              <div class="dot-inner"></div>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-badge">2017 — 2021</div>
+              <h3 class="timeline-role">B.Sc. in Computer Science & Engineering</h3>
+              <h4 class="timeline-company"><i class="fa-solid fa-graduation-cap"></i> University of Science & Technology</h4>
+              <p class="timeline-desc">
+                Graduated with Honors. Specialized in Algorithms, Data Structures, Software Architecture, and Human-Computer Interaction (HCI).
+              </p>
+              <div class="timeline-tags">
+                <span>Algorithms</span>
+                <span>Computer Networks</span>
+                <span>Database Systems</span>
+                <span>HCI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE DEV TERMINAL SECTION (FUN & ENGAGING FOR TECH LEADERS) -->
+    <section class="section terminal-section" id="terminal-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-terminal"></i> Interactive Playground</span>
+          <h2 class="section-title">Explore my world via CLI</h2>
+          <p class="section-desc">Type commands like <code class="code-pill">help</code>, <code class="code-pill">skills</code>, <code class="code-pill">projects</code>, or <code class="code-pill">hire</code>.</p>
+        </div>
+
+        <div class="terminal-window">
+          <!-- Terminal Titlebar -->
+          <div class="terminal-bar">
+            <div class="terminal-buttons">
+              <span class="term-btn btn-close"></span>
+              <span class="term-btn btn-min"></span>
+              <span class="term-btn btn-max"></span>
+            </div>
+            <div class="terminal-title">maruf@portfolio-os: ~ (zsh)</div>
+            <div class="terminal-badge">LIVE</div>
+          </div>
+
+          <!-- Terminal Screen -->
+          <div class="terminal-body" id="terminal-output">
+            <div class="terminal-line text-muted">
+              Portfolio OS v2.6.4 (x86_64-apple-darwin)
+            </div>
+            <div class="terminal-line text-accent">
+              Welcome! Type <span class="cmd-highlight">help</span> to list available commands or click the shortcut buttons below.
+            </div>
+          </div>
+
+          <!-- Quick Command Shortcuts -->
+          <div class="terminal-shortcuts">
+            <span class="shortcut-label">Quick run:</span>
+            <button class="term-pill-btn" data-cmd="about">about</button>
+            <button class="term-pill-btn" data-cmd="skills">skills</button>
+            <button class="term-pill-btn" data-cmd="projects">projects</button>
+            <button class="term-pill-btn" data-cmd="hire">hire</button>
+            <button class="term-pill-btn" data-cmd="sudo hire">sudo hire</button>
+            <button class="term-pill-btn" data-cmd="clear">clear</button>
+          </div>
+
+          <!-- Terminal Input Row -->
+          <div class="terminal-input-row">
+            <span class="terminal-prompt">maruf@dev:~$</span>
+            <input type="text" id="terminal-input" class="terminal-input" placeholder="Type command here..." autocomplete="off" spellcheck="false" aria-label="Terminal Command Input">
+            <button id="terminal-submit-btn" class="terminal-send-btn" aria-label="Run command">
+              <i class="fa-solid fa-arrow-turn-down fa-rotate-90"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-comments"></i> Endorsements</span>
+          <h2 class="section-title">What colleagues & clients say</h2>
+          <p class="section-desc">Feedback from people I've had the pleasure of building with.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card glass-panel">
+            <div class="stars-row">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Maruf transformed our outdated dashboard into an ultra-modern, blazing-fast product. His eye for detail and mastery of frontend performance is truly world-class."
+            </p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="David Sterling" class="author-avatar">
+              <div class="author-info">
+                <h4 class="author-name">David Sterling</h4>
+                <span class="author-role">VP of Product, CloudScale</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card glass-panel">
+            <div class="stars-row">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Working with Maruf was seamless. He not only wrote clean, maintainable code, but he actively contributed ideas to improve the user onboarding flow. Highly recommended!"
+            </p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Elena Rostova" class="author-avatar">
+              <div class="author-info">
+                <h4 class="author-name">Elena Rostova</h4>
+                <span class="author-role">Founder & CEO, ArtFlow AI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card glass-panel">
+            <div class="stars-row">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Exceptional technical depth paired with sharp aesthetic taste. He delivered our e-commerce frontend two weeks ahead of schedule with 99+ Lighthouse metrics."
+            </p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Marcus Chen" class="author-avatar">
+              <div class="author-info">
+                <h4 class="author-name">Marcus Chen</h4>
+                <span class="author-role">Engineering Lead, Nexus Group</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-regular fa-paper-plane"></i> Get In Touch</span>
+          <h2 class="section-title">Let’s build something extraordinary together</h2>
+          <p class="section-desc">Have an exciting idea, an opening on your team, or just want to connect? My inbox is always open.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Contact Details & Info -->
+          <div class="contact-info-col">
+            <div class="contact-card glass-panel">
+              <h3 class="card-heading">Contact Details</h3>
+              <p class="text-muted">Feel free to reach out via email or connect with me across platforms.</p>
+
+              <!-- Email Item with Instant Copy -->
+              <div class="contact-detail-row">
+                <div class="contact-icon-box">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Email</span>
+                  <div class="copy-email-group">
+                    <a href="mailto:maruf.developer@example.com" class="contact-value" id="email-address">maruf.developer@example.com</a>
+                    <button class="copy-btn" id="copy-email-btn" title="Copy to clipboard" aria-label="Copy Email">
+                      <i class="fa-regular fa-copy"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Location & Timezone -->
+              <div class="contact-detail-row">
+                <div class="contact-icon-box">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Location & Local Time</span>
+                  <span class="contact-value">Worldwide (Remote) • <span id="local-clock" class="text-accent">Loading time...</span></span>
+                </div>
+              </div>
+
+              <!-- Availability Status -->
+              <div class="contact-detail-row">
+                <div class="contact-icon-box">
+                  <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Availability</span>
+                  <span class="contact-value text-success">Open for Full-time, Contract & Advisory</span>
+                </div>
+              </div>
+
+              <!-- Social Profiles -->
+              <div class="social-links-container">
+                <span class="social-header">Connect on Socials:</span>
+                <div class="social-icons-group">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="X (Twitter)">
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </a>
+                  <a href="https://codepen.io" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="CodePen">
+                    <i class="fa-brands fa-codepen"></i>
+                  </a>
+                  <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Dribbble">
+                    <i class="fa-brands fa-dribbble"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Contact Form -->
+          <div class="contact-form-col">
+            <div class="glass-panel contact-form-wrapper">
+              <h3 class="card-heading">Send a Message</h3>
+              <form id="contact-form" class="contact-form" novalidate>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="name" class="form-label">Your Name <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                      <i class="fa-regular fa-user input-icon"></i>
+                      <input type="text" id="name" name="name" class="form-input" placeholder="e.g. John Doe" required>
+                    </div>
+                    <span class="form-error" id="name-error"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email" class="form-label">Your Email <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                      <i class="fa-regular fa-envelope input-icon"></i>
+                      <input type="email" id="email" name="email" class="form-input" placeholder="e.g. john@company.com" required>
+                    </div>
+                    <span class="form-error" id="email-error"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="subject" class="form-label">Subject</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-tag input-icon"></i>
+                    <input type="text" id="subject" name="subject" class="form-input" placeholder="Project collaboration / Opportunity">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="form-label">Your Message <span class="required">*</span></label>
+                  <div class="input-with-icon textarea-icon-wrapper">
+                    <i class="fa-regular fa-message input-icon"></i>
+                    <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Tell me about your goals, timeline, and vision..." required></textarea>
+                  </div>
+                  <span class="form-error" id="message-error"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Send Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Details Modal Popup -->
+  <div class="modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-box glass-panel">
+      <button class="modal-close-btn" id="modal-close" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-content" id="modal-body">
+        <!-- Injected dynamically by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast" id="toast" role="alert" aria-live="polite">
+    <div class="toast-icon" id="toast-icon">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <div class="toast-message" id="toast-message">Message sent successfully!</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="brand-logo" aria-label="Maruf Portfolio Home">
+            <div class="logo-mark">
+              <div class="logo-mark-glow"></div>
+              <div class="logo-mark-inner">
+                <svg class="logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="footerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#06b6d4" />
+                      <stop offset="50%" stop-color="#6366f1" />
+                      <stop offset="100%" stop-color="#ec4899" />
+                    </linearGradient>
+                    <linearGradient id="footerFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.22" />
+                      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.08" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="2.5" y="2.5" width="37" height="37" rx="11" fill="url(#footerFill)" stroke="url(#footerGrad)" stroke-width="1.8" class="logo-svg-border" />
+                  <path d="M12 29V14.5L21 23.5L30 14.5V29" stroke="url(#footerGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="logo-svg-m" />
+                  <circle cx="21" cy="14" r="2.2" fill="#38bdf8" class="logo-svg-spark" />
+                </svg>
+              </div>
+            </div>
+            <div class="logo-details">
+              <span class="logo-name">MARUF<span class="logo-dot"></span></span>
+              <span class="logo-badge">DEV / STUDIO</span>
+            </div>
+          </a>
+          <p class="footer-motto">
+            Crafting state-of-the-art web experiences where performance meets elegance.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <h5 class="footer-heading">Navigation</h5>
+          <ul class="footer-nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h5 class="footer-heading">Ecosystem</h5>
+          <ul class="footer-nav">
+            <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub Profile</a></li>
+            <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="#terminal-section">Dev Terminal</a></li>
+            <li><a href="#hero">Back to Top</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; <span id="current-year">2026</span> Maruf. Designed & coded with passion. All rights reserved.
+        </p>
+        <div class="footer-extra">
+          <span class="badge-tag">Pure HTML5 • CSS3 • Vanilla JS</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top floating button -->
+  <button class="back-to-top-btn" id="back-to-top" aria-label="Back to Top" title="Back to Top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
