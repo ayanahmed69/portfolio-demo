@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initCopyEmail();
   initLocalClock();
+  initLiquidTiltAndGlare();
+  initLiquidRipple();
+  initScrollReveal();
 });
 
 /* ==========================================================================
@@ -847,4 +850,109 @@ function showToast(message) {
   toastTimeout = setTimeout(() => {
     toast.classList.remove('show');
   }, 4000);
+}
+
+/* ==========================================================================
+   16. LIQUID 3D PERSPECTIVE TILT & SPECULAR GLARE PHYSICS
+   ========================================================================== */
+function initLiquidTiltAndGlare() {
+  if (window.innerWidth <= 768) return;
+
+  const tiltTargets = document.querySelectorAll(
+    '.glass-panel, .project-card, .skill-card, .avatar-card, .feature-card, .testimonial-card'
+  );
+
+  tiltTargets.forEach((card) => {
+    let bounds;
+
+    function onMouseEnter() {
+      bounds = card.getBoundingClientRect();
+      card.style.transition = 'transform 0.1s ease-out, box-shadow 0.25s ease';
+    }
+
+    function onMouseMove(e) {
+      if (!bounds) bounds = card.getBoundingClientRect();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+
+      // Update liquid glare CSS variables
+      card.style.setProperty('--mouse-x', `${mouseX}px`);
+      card.style.setProperty('--mouse-y', `${mouseY}px`);
+
+      // Calculate 3D tilt angles
+      const centerX = bounds.width / 2;
+      const centerY = bounds.height / 2;
+      const tiltX = ((mouseY - centerY) / centerY) * -5.5;
+      const tiltY = ((mouseX - centerX) / centerX) * 5.5;
+
+      card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateY(-5px) scale3d(1.015, 1.015, 1.015)`;
+    }
+
+    function onMouseLeave() {
+      card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)';
+    }
+
+    card.addEventListener('mouseenter', onMouseEnter);
+    card.addEventListener('mousemove', onMouseMove);
+    card.addEventListener('mouseleave', onMouseLeave);
+  });
+}
+
+/* ==========================================================================
+   17. LIQUID WATER RIPPLE EFFECT ON CLICK
+   ========================================================================== */
+function initLiquidRipple() {
+  const rippleElements = document.querySelectorAll('.btn, .glass-panel, .filter-btn, .skill-tab-btn, .social-btn');
+
+  rippleElements.forEach((el) => {
+    el.addEventListener('click', function (e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const ripple = document.createElement('span');
+      ripple.className = 'liquid-ripple';
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+
+      const diameter = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = `${diameter}px`;
+
+      this.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 750);
+    });
+  });
+}
+
+/* ==========================================================================
+   18. FLUID SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
+function initScrollReveal() {
+  const elementsToReveal = document.querySelectorAll(
+    '.section-header, .feature-card, .about-story-card, .skill-card, .project-card, .timeline-item, .terminal-window, .testimonial-card, .contact-card, .contact-form-wrapper'
+  );
+
+  elementsToReveal.forEach((el) => {
+    el.classList.add('reveal-item');
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: '0px 0px -30px 0px'
+    }
+  );
+
+  elementsToReveal.forEach((el) => observer.observe(el));
 }

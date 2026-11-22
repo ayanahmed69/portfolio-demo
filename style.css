@@ -145,44 +145,156 @@ body {
   z-index: 0;
 }
 
-.glow-orb {
+/* --- LIQUID AMBIENT MESH ENGINE --- */
+.liquid-mesh-container {
   position: fixed;
-  border-radius: 50%;
-  filter: blur(130px);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.35;
-  animation: floatOrb 20s infinite alternate ease-in-out;
+  overflow: hidden;
 }
 
-.orb-1 {
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, var(--accent-primary) 0%, rgba(99, 102, 241, 0) 70%);
-  top: -80px;
-  left: -80px;
+.liquid-blob {
+  position: absolute;
+  border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%;
+  filter: blur(85px);
+  opacity: 0.42;
+  will-change: transform, border-radius;
+  pointer-events: none;
 }
 
-.orb-2 {
+[data-theme="light"] .liquid-blob {
+  opacity: 0.28;
+  filter: blur(95px);
+}
+
+.blob-cyan {
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, var(--accent-cyan) 0%, rgba(6, 182, 212, 0) 70%);
-  bottom: 10%;
-  right: -100px;
-  animation-duration: 25s;
+  background: radial-gradient(circle, #06b6d4 0%, rgba(6, 182, 212, 0.8) 40%, rgba(6, 182, 212, 0) 70%);
+  top: -120px;
+  left: -100px;
+  animation: morphLiquid1 22s infinite alternate ease-in-out;
 }
 
-@keyframes floatOrb {
+.blob-purple {
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0.75) 45%, rgba(139, 92, 246, 0) 70%);
+  top: 25%;
+  right: -140px;
+  animation: morphLiquid2 26s infinite alternate ease-in-out;
+}
+
+.blob-magenta {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0.7) 40%, rgba(236, 72, 153, 0) 70%);
+  bottom: 8%;
+  left: -80px;
+  animation: morphLiquid3 24s infinite alternate ease-in-out;
+}
+
+.blob-blue {
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, #3b82f6 0%, rgba(59, 130, 246, 0.75) 45%, rgba(59, 130, 246, 0) 70%);
+  bottom: -100px;
+  right: 15%;
+  animation: morphLiquid4 28s infinite alternate ease-in-out;
+}
+
+.blob-amber {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #f59e0b 0%, rgba(245, 158, 11, 0.6) 40%, rgba(245, 158, 11, 0) 70%);
+  top: 55%;
+  left: 35%;
+  animation: morphLiquid5 20s infinite alternate ease-in-out;
+}
+
+@keyframes morphLiquid1 {
   0% {
+    border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    border-radius: 65% 35% 45% 55% / 35% 65% 35% 65%;
+    transform: translate(70px, 50px) rotate(45deg) scale(1.1);
+  }
+  66% {
+    border-radius: 35% 65% 30% 70% / 60% 40% 60% 40%;
+    transform: translate(-40px, 80px) rotate(90deg) scale(0.95);
+  }
+  100% {
+    border-radius: 50% 50% 60% 40% / 45% 55% 45% 55%;
+    transform: translate(30px, -20px) rotate(135deg) scale(1.05);
+  }
+}
+
+@keyframes morphLiquid2 {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     transform: translate(0, 0) scale(1);
   }
-
   50% {
-    transform: translate(60px, 40px) scale(1.1);
+    border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%;
+    transform: translate(-80px, 60px) scale(1.15);
   }
-
   100% {
-    transform: translate(-30px, 80px) scale(0.95);
+    border-radius: 55% 45% 40% 60% / 40% 55% 45% 60%;
+    transform: translate(40px, -50px) scale(0.92);
+  }
+}
+
+@keyframes morphLiquid3 {
+  0% {
+    border-radius: 50% 50% 40% 60% / 40% 60% 40% 60%;
+    transform: translate(0, 0);
+  }
+  50% {
+    border-radius: 70% 30% 55% 45% / 60% 35% 65% 40%;
+    transform: translate(60px, -60px) scale(1.12);
+  }
+  100% {
+    border-radius: 35% 65% 45% 55% / 50% 40% 60% 50%;
+    transform: translate(-30px, 40px) scale(0.96);
+  }
+}
+
+@keyframes morphLiquid4 {
+  0% {
+    border-radius: 45% 55% 65% 35% / 55% 45% 55% 45%;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    border-radius: 65% 35% 35% 65% / 35% 65% 45% 55%;
+    transform: translate(-60px, -70px) rotate(-60deg) scale(1.08);
+  }
+  100% {
+    border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%;
+    transform: translate(50px, 30px) rotate(45deg) scale(0.94);
+  }
+}
+
+@keyframes morphLiquid5 {
+  0% {
+    border-radius: 50%;
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    border-radius: 65% 35% 60% 40% / 40% 60% 40% 60%;
+    transform: translate(-50px, 40px) scale(1.2);
+    opacity: 0.48;
+  }
+  100% {
+    border-radius: 35% 65% 40% 60% / 60% 40% 60% 40%;
+    transform: translate(40px, -30px) scale(0.9);
+    opacity: 0.35;
   }
 }
 
@@ -284,19 +396,65 @@ a {
   text-align: center;
 }
 
+/* --- LIQUID GLASS PANEL SYSTEM --- */
 .glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--border-subtle);
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.015) 50%, rgba(255, 255, 255, 0.05) 100%), rgba(11, 17, 32, 0.62);
+  backdrop-filter: blur(28px) saturate(210%);
+  -webkit-backdrop-filter: blur(28px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.36);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+  box-shadow: 
+    0 18px 45px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 3px 0 rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Dynamic Interactive Specular Liquid Glare */
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(750px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.14) 0%, transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.glass-panel:hover::before {
+  opacity: 1;
 }
 
 .glass-panel:hover {
-  border-color: var(--border-highlight);
-  box-shadow: var(--shadow-glow);
+  border-color: rgba(99, 102, 241, 0.45);
+  border-top-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 
+    0 26px 65px -10px rgba(99, 102, 241, 0.28),
+    0 0 30px rgba(99, 102, 241, 0.18),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 8px 0 rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="light"] .glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.65) 100%);
+  border-color: rgba(255, 255, 255, 0.7);
+  border-top-color: rgba(255, 255, 255, 0.95);
+  border-left-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 16px 36px -8px rgba(15, 23, 42, 0.08),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .glass-panel::before {
+  background: radial-gradient(750px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.09) 0%, transparent 60%);
 }
 
 /* Section Header Structure */
@@ -981,6 +1139,8 @@ a {
   position: relative;
   width: 340px;
   max-width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .avatar-glow {
@@ -991,10 +1151,28 @@ a {
   width: 100%;
   height: 100%;
   background: var(--gradient-primary);
-  filter: blur(50px);
-  opacity: 0.45;
+  filter: blur(55px);
+  opacity: 0.55;
   border-radius: var(--radius-lg);
   z-index: 0;
+}
+
+/* Liquid Refraction Ring that rotates smoothly */
+.avatar-liquid-ring {
+  position: absolute;
+  inset: -10px;
+  border-radius: 28px;
+  background: conic-gradient(from 0deg, #06b6d4, #6366f1, #d946ef, #3b82f6, #06b6d4);
+  opacity: 0.5;
+  filter: blur(14px);
+  z-index: 0;
+  animation: rotateLiquidRing 14s linear infinite;
+  will-change: transform;
+}
+
+@keyframes rotateLiquidRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .avatar-frame {
@@ -1003,8 +1181,11 @@ a {
   height: 420px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--border-highlight);
-  box-shadow: var(--shadow-lg);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-top: 2px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.65),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.4);
   z-index: 1;
 }
 
@@ -1014,35 +1195,44 @@ a {
   object-fit: cover;
   object-position: center 25%;
   filter: contrast(108%) brightness(102%);
-  transition: transform var(--transition-smooth), filter var(--transition-smooth);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
 }
 
 .avatar-frame:hover .avatar-img {
-  transform: scale(1.05);
-  filter: contrast(115%) brightness(108%);
+  transform: scale(1.06);
+  filter: contrast(116%) brightness(108%);
 }
 
 .avatar-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 12, 20, 0) 60%, rgba(8, 12, 20, 0.8) 100%);
+  background: linear-gradient(180deg, rgba(8, 12, 20, 0) 55%, rgba(8, 12, 20, 0.85) 100%);
   pointer-events: none;
 }
 
-/* Floating Badges on Hero */
+/* Floating Badges with Liquid Frosted Glass */
 .floating-badge {
   position: absolute;
   z-index: 2;
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.38);
   border-radius: var(--radius-md);
-  padding: 0.65rem 0.95rem;
+  padding: 0.7rem 1.05rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  box-shadow: var(--shadow-md);
+  gap: 0.8rem;
+  box-shadow: 0 14px 35px -8px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25);
   animation: floatSlow 6s ease-in-out infinite;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-badge:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 18px 45px -8px rgba(99, 102, 241, 0.35);
 }
 
 .badge-top-right {
@@ -2583,6 +2773,66 @@ a {
     bottom: 1rem;
     left: 1rem;
   }
+}
+
+/* --- LIQUID RIPPLE EFFECT --- */
+.liquid-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, rgba(99, 102, 241, 0.3) 45%, transparent 75%);
+  pointer-events: none;
+  animation: rippleExpand 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 99;
+}
+
+@keyframes rippleExpand {
+  to {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
+}
+
+/* --- SCROLL REVEAL FLUID ANIMATIONS --- */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-item.reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Liquid Shimmer Sweep for Buttons */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 25%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  transform: rotate(30deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  opacity: 1;
+  animation: buttonShimmer 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes buttonShimmer {
+  0% { left: -60%; }
+  100% { left: 160%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

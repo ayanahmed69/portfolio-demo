@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maruf | Creative Technologist & Full-Stack Engineer</title>
-  <meta name="description" content="Portfolio of Maruf, a creative technologist, full-stack engineer, and UI/UX architect crafting modern web experiences.">
-  <meta name="keywords" content="Portfolio, Full Stack Developer, Software Engineer, UI/UX, Web Design, JavaScript, React, Python">
+  <meta name="description"
+    content="Portfolio of Maruf, a creative technologist, full-stack engineer, and UI/UX architect crafting modern web experiences.">
+  <meta name="keywords"
+    content="Portfolio, Full Stack Developer, Software Engineer, UI/UX, Web Design, JavaScript, React, Python">
   <meta name="author" content="Maruf">
-  
+
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Maruf | Creative Technologist & Full-Stack Engineer">
-  <meta property="og:description" content="Building scalable web applications, sleek user interfaces, and next-gen digital experiences.">
-  
+  <meta property="og:description"
+    content="Building scalable web applications, sleek user interfaces, and next-gen digital experiences.">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- Background Canvas for Subtle Particle & Ambient Glow Effect -->
+  <!-- Liquid Ambient Background Engine & Particle Canvas -->
   <canvas id="ambient-canvas"></canvas>
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
+  <div class="liquid-mesh-container" aria-hidden="true">
+    <div class="liquid-blob blob-cyan"></div>
+    <div class="liquid-blob blob-purple"></div>
+    <div class="liquid-blob blob-magenta"></div>
+    <div class="liquid-blob blob-blue"></div>
+    <div class="liquid-blob blob-amber"></div>
+  </div>
 
   <!-- Custom Cursor Dot & Ring (Desktop) -->
   <div class="cursor-dot" id="cursor-dot"></div>
@@ -55,8 +69,10 @@
                   <stop offset="100%" stop-color="#6366f1" stop-opacity="0.08" />
                 </linearGradient>
               </defs>
-              <rect x="2.5" y="2.5" width="37" height="37" rx="11" fill="url(#headerFill)" stroke="url(#headerGrad)" stroke-width="1.8" class="logo-svg-border" />
-              <path d="M12 29V14.5L21 23.5L30 14.5V29" stroke="url(#headerGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="logo-svg-m" />
+              <rect x="2.5" y="2.5" width="37" height="37" rx="11" fill="url(#headerFill)" stroke="url(#headerGrad)"
+                stroke-width="1.8" class="logo-svg-border" />
+              <path d="M12 29V14.5L21 23.5L30 14.5V29" stroke="url(#headerGrad)" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round" class="logo-svg-m" />
               <circle cx="21" cy="14" r="2.2" fill="#38bdf8" class="logo-svg-spark" />
             </svg>
           </div>
@@ -122,8 +138,10 @@
                   <stop offset="100%" stop-color="#6366f1" stop-opacity="0.08" />
                 </linearGradient>
               </defs>
-              <rect x="2.5" y="2.5" width="37" height="37" rx="11" fill="url(#drawerFill)" stroke="url(#drawerGrad)" stroke-width="1.8" class="logo-svg-border" />
-              <path d="M12 29V14.5L21 23.5L30 14.5V29" stroke="url(#drawerGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="logo-svg-m" />
+              <rect x="2.5" y="2.5" width="37" height="37" rx="11" fill="url(#drawerFill)" stroke="url(#drawerGrad)"
+                stroke-width="1.8" class="logo-svg-border" />
+              <path d="M12 29V14.5L21 23.5L30 14.5V29" stroke="url(#drawerGrad)" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round" class="logo-svg-m" />
               <circle cx="21" cy="14" r="2.2" fill="#38bdf8" class="logo-svg-spark" />
             </svg>
           </div>
@@ -174,7 +192,8 @@
           </h1>
 
           <p class="hero-subtitle">
-            A versatile Full-Stack Engineer & Creative UI/UX Architect with a passion for designing fast, resilient, and visually captivating digital products that transform ideas into reality.
+            A versatile Full-Stack Engineer & Creative UI/UX Architect with a passion for designing fast, resilient, and
+            visually captivating digital products that transform ideas into reality.
           </p>
 
           <!-- Action Buttons -->
@@ -187,7 +206,8 @@
               <i class="fa-regular fa-paper-plane"></i>
               <span>Hire Me</span>
             </a>
-            <a href="#terminal-section" class="btn btn-icon-only" title="Open Interactive Terminal" aria-label="Open Interactive Terminal">
+            <a href="#terminal-section" class="btn btn-icon-only" title="Open Interactive Terminal"
+              aria-label="Open Interactive Terminal">
               <i class="fa-solid fa-terminal"></i>
             </a>
           </div>
@@ -215,6 +235,7 @@
         <div class="hero-visual">
           <div class="avatar-card">
             <div class="avatar-glow"></div>
+            <div class="avatar-liquid-ring"></div>
             <div class="avatar-frame">
               <img src="assets/profile.jpg" alt="Maruf Portrait" class="avatar-img" />
               <div class="avatar-overlay"></div>
@@ -282,10 +303,13 @@
               <i class="fa-solid fa-compass-drafting text-gradient"></i> My Philosophy
             </h3>
             <p>
-              I believe great software is more than lines of code; it is an intuitive extension of human thought. Over the past 5 years, I have worked across the stack—from designing high-fidelity design systems to building resilient distributed backend microservices.
+              I believe great software is more than lines of code; it is an intuitive extension of human thought. Over
+              the past 5 years, I have worked across the stack—from designing high-fidelity design systems to building
+              resilient distributed backend microservices.
             </p>
             <p>
-              Whether tuning WebGL animations for 60fps fluidity or structuring zero-downtime database migrations, my ultimate goal is to deliver an unforgettable user experience that drives measurable impact.
+              Whether tuning WebGL animations for 60fps fluidity or structuring zero-downtime database migrations, my
+              ultimate goal is to deliver an unforgettable user experience that drives measurable impact.
             </p>
 
             <div class="about-highlights">
@@ -329,7 +353,8 @@
               </div>
               <div class="feature-body">
                 <h4>Frontend Craftsmanship</h4>
-                <p>Creating modular, responsive, and accessible web experiences utilizing modern standards, semantic markup, and dynamic animations.</p>
+                <p>Creating modular, responsive, and accessible web experiences utilizing modern standards, semantic
+                  markup, and dynamic animations.</p>
               </div>
             </div>
 
@@ -340,7 +365,8 @@
               </div>
               <div class="feature-body">
                 <h4>Rock-Solid Backend Architecture</h4>
-                <p>Designing scalable backend engines, secure auth systems, and low-latency databases built for millions of queries.</p>
+                <p>Designing scalable backend engines, secure auth systems, and low-latency databases built for millions
+                  of queries.</p>
               </div>
             </div>
 
@@ -351,7 +377,8 @@
               </div>
               <div class="feature-body">
                 <h4>Modern AI & Edge Tooling</h4>
-                <p>Integrating LLMs, modern toolchains, and edge computing to turn conventional interfaces into intelligent co-pilots.</p>
+                <p>Integrating LLMs, modern toolchains, and edge computing to turn conventional interfaces into
+                  intelligent co-pilots.</p>
               </div>
             </div>
           </div>
@@ -524,7 +551,8 @@
         <div class="section-header text-center">
           <span class="section-tag"><i class="fa-solid fa-fire"></i> Portfolio Showcase</span>
           <h2 class="section-title">Crafted with precision & purpose</h2>
-          <p class="section-desc">A curated selection of featured web applications, open-source projects, and client platforms.</p>
+          <p class="section-desc">A curated selection of featured web applications, open-source projects, and client
+            platforms.</p>
         </div>
 
         <!-- Filter Buttons -->
@@ -537,16 +565,18 @@
 
         <!-- Projects Grid -->
         <div class="projects-grid" id="projects-grid">
-          
+
           <!-- Project 1: Zenith Analytics Dashboard -->
           <article class="project-card glass-panel" data-category="fullstack" data-project-id="1">
             <div class="project-thumb-container">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Zenith Analytics Dashboard" class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                alt="Zenith Analytics Dashboard" class="project-thumb">
               <div class="project-overlay-links">
                 <button class="overlay-btn view-details-btn" data-id="1" aria-label="View Project Details">
                   <i class="fa-solid fa-eye"></i> Details
                 </button>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn"
+                  aria-label="Live Demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
                 </a>
               </div>
@@ -560,9 +590,10 @@
               </div>
               <h3 class="project-title">Zenith Real-Time Analytics</h3>
               <p class="project-excerpt">
-                A high-performance SaaS analytics suite providing real-time telemetry, visual funnels, and predictive user behavior models.
+                A high-performance SaaS analytics suite providing real-time telemetry, visual funnels, and predictive
+                user behavior models.
               </p>
-              
+
               <div class="project-tech-tags">
                 <span class="tech-tag">React</span>
                 <span class="tech-tag">TypeScript</span>
@@ -585,12 +616,14 @@
           <!-- Project 2: Aurora AI Workspace -->
           <article class="project-card glass-panel" data-category="ai" data-project-id="2">
             <div class="project-thumb-container">
-              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Aurora AI Creative Engine" class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
+                alt="Aurora AI Creative Engine" class="project-thumb">
               <div class="project-overlay-links">
                 <button class="overlay-btn view-details-btn" data-id="2" aria-label="View Project Details">
                   <i class="fa-solid fa-eye"></i> Details
                 </button>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn"
+                  aria-label="Live Demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
                 </a>
               </div>
@@ -603,9 +636,10 @@
               </div>
               <h3 class="project-title">Aurora Generative Studio</h3>
               <p class="project-excerpt">
-                An intelligent visual canvas integrating multi-modal LLMs to assist designers with real-time UI generation and accessibility audits.
+                An intelligent visual canvas integrating multi-modal LLMs to assist designers with real-time UI
+                generation and accessibility audits.
               </p>
-              
+
               <div class="project-tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">FastAPI</span>
@@ -628,12 +662,14 @@
           <!-- Project 3: Nova Minimalist E-Commerce -->
           <article class="project-card glass-panel" data-category="frontend" data-project-id="3">
             <div class="project-thumb-container">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Nova E-Commerce" class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+                alt="Nova E-Commerce" class="project-thumb">
               <div class="project-overlay-links">
                 <button class="overlay-btn view-details-btn" data-id="3" aria-label="View Project Details">
                   <i class="fa-solid fa-eye"></i> Details
                 </button>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn"
+                  aria-label="Live Demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
                 </a>
               </div>
@@ -646,9 +682,10 @@
               </div>
               <h3 class="project-title">Nova Luxury Living Store</h3>
               <p class="project-excerpt">
-                Headless shopping platform featuring interactive 3D product previews, instant page loads, and seamless Stripe payment integration.
+                Headless shopping platform featuring interactive 3D product previews, instant page loads, and seamless
+                Stripe payment integration.
               </p>
-              
+
               <div class="project-tech-tags">
                 <span class="tech-tag">Three.js</span>
                 <span class="tech-tag">React</span>
@@ -670,12 +707,14 @@
           <!-- Project 4: Pulse DevOps & Cloud Monitor -->
           <article class="project-card glass-panel" data-category="fullstack" data-project-id="4">
             <div class="project-thumb-container">
-              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Pulse Infrastructure Monitor" class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+                alt="Pulse Infrastructure Monitor" class="project-thumb">
               <div class="project-overlay-links">
                 <button class="overlay-btn view-details-btn" data-id="4" aria-label="View Project Details">
                   <i class="fa-solid fa-eye"></i> Details
                 </button>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn"
+                  aria-label="Live Demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
                 </a>
               </div>
@@ -688,9 +727,10 @@
               </div>
               <h3 class="project-title">Pulse Server & API Sentinel</h3>
               <p class="project-excerpt">
-                Distributed server health monitoring tool with instant webhook triggers, latency graphing, and zero-overhead agent workers.
+                Distributed server health monitoring tool with instant webhook triggers, latency graphing, and
+                zero-overhead agent workers.
               </p>
-              
+
               <div class="project-tech-tags">
                 <span class="tech-tag">Go / Node</span>
                 <span class="tech-tag">Docker</span>
@@ -712,12 +752,14 @@
           <!-- Project 5: NeuroFlow Mind Mapping UI -->
           <article class="project-card glass-panel" data-category="frontend" data-project-id="5">
             <div class="project-thumb-container">
-              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="NeuroFlow Knowledge Graph" class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80"
+                alt="NeuroFlow Knowledge Graph" class="project-thumb">
               <div class="project-overlay-links">
                 <button class="overlay-btn view-details-btn" data-id="5" aria-label="View Project Details">
                   <i class="fa-solid fa-eye"></i> Details
                 </button>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn"
+                  aria-label="Live Demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
                 </a>
               </div>
@@ -730,9 +772,10 @@
               </div>
               <h3 class="project-title">NeuroFlow Knowledge Canvas</h3>
               <p class="project-excerpt">
-                Interactive node-based canvas for brainstorming and research mapping featuring infinite zoom, keyboard shortcuts, and Markdown support.
+                Interactive node-based canvas for brainstorming and research mapping featuring infinite zoom, keyboard
+                shortcuts, and Markdown support.
               </p>
-              
+
               <div class="project-tech-tags">
                 <span class="tech-tag">HTML5 Canvas</span>
                 <span class="tech-tag">TypeScript</span>
@@ -754,12 +797,14 @@
           <!-- Project 6: CyberShield Security Hub -->
           <article class="project-card glass-panel" data-category="ai" data-project-id="6">
             <div class="project-thumb-container">
-              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="CyberShield Security" class="project-thumb">
+              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80"
+                alt="CyberShield Security" class="project-thumb">
               <div class="project-overlay-links">
                 <button class="overlay-btn view-details-btn" data-id="6" aria-label="View Project Details">
                   <i class="fa-solid fa-eye"></i> Details
                 </button>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn" aria-label="Live Demo">
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="overlay-btn"
+                  aria-label="Live Demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
                 </a>
               </div>
@@ -772,9 +817,10 @@
               </div>
               <h3 class="project-title">CyberShield Threat Radar</h3>
               <p class="project-excerpt">
-                Real-time vulnerability detection dashboard monitoring package dependencies, open ports, and automated compliance reports.
+                Real-time vulnerability detection dashboard monitoring package dependencies, open ports, and automated
+                compliance reports.
               </p>
-              
+
               <div class="project-tech-tags">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">FastAPI</span>
@@ -817,7 +863,8 @@
               <h3 class="timeline-role">Lead Full-Stack Developer</h3>
               <h4 class="timeline-company"><i class="fa-solid fa-building"></i> Vertex Digital Solutions</h4>
               <p class="timeline-desc">
-                Architected high-scale web platforms supporting over 500,000 monthly active users. Mentored junior engineers, established TypeScript standards, and decreased initial page bundle size by 42%.
+                Architected high-scale web platforms supporting over 500,000 monthly active users. Mentored junior
+                engineers, established TypeScript standards, and decreased initial page bundle size by 42%.
               </p>
               <div class="timeline-tags">
                 <span>React</span>
@@ -839,7 +886,8 @@
               <h3 class="timeline-role">Senior Frontend Engineer & UI Designer</h3>
               <h4 class="timeline-company"><i class="fa-solid fa-building"></i> Hyperion Software Studio</h4>
               <p class="timeline-desc">
-                Built scalable UI design systems with Figma tokens synced directly to CSS variables. Spearheaded the frontend redesign for 8 enterprise clients, lifting conversion rates by an average of 28%.
+                Built scalable UI design systems with Figma tokens synced directly to CSS variables. Spearheaded the
+                frontend redesign for 8 enterprise clients, lifting conversion rates by an average of 28%.
               </p>
               <div class="timeline-tags">
                 <span>Vue.js</span>
@@ -860,7 +908,8 @@
               <h3 class="timeline-role">Full-Stack Web Developer</h3>
               <h4 class="timeline-company"><i class="fa-solid fa-building"></i> Nexus Labs</h4>
               <p class="timeline-desc">
-                Developed responsive web applications, secure REST APIs, and database migrations. Implemented end-to-end automated testing with Jest and Cypress.
+                Developed responsive web applications, secure REST APIs, and database migrations. Implemented end-to-end
+                automated testing with Jest and Cypress.
               </p>
               <div class="timeline-tags">
                 <span>JavaScript</span>
@@ -879,9 +928,11 @@
             <div class="timeline-content glass-panel">
               <div class="timeline-badge">2017 — 2021</div>
               <h3 class="timeline-role">B.Sc. in Computer Science & Engineering</h3>
-              <h4 class="timeline-company"><i class="fa-solid fa-graduation-cap"></i> University of Science & Technology</h4>
+              <h4 class="timeline-company"><i class="fa-solid fa-graduation-cap"></i> University of Science & Technology
+              </h4>
               <p class="timeline-desc">
-                Graduated with Honors. Specialized in Algorithms, Data Structures, Software Architecture, and Human-Computer Interaction (HCI).
+                Graduated with Honors. Specialized in Algorithms, Data Structures, Software Architecture, and
+                Human-Computer Interaction (HCI).
               </p>
               <div class="timeline-tags">
                 <span>Algorithms</span>
@@ -901,7 +952,9 @@
         <div class="section-header text-center">
           <span class="section-tag"><i class="fa-solid fa-terminal"></i> Interactive Playground</span>
           <h2 class="section-title">Explore my world via CLI</h2>
-          <p class="section-desc">Type commands like <code class="code-pill">help</code>, <code class="code-pill">skills</code>, <code class="code-pill">projects</code>, or <code class="code-pill">hire</code>.</p>
+          <p class="section-desc">Type commands like <code class="code-pill">help</code>, <code
+              class="code-pill">skills</code>, <code class="code-pill">projects</code>, or <code
+              class="code-pill">hire</code>.</p>
         </div>
 
         <div class="terminal-window">
@@ -922,7 +975,8 @@
               Portfolio OS v2.6.4 (x86_64-apple-darwin)
             </div>
             <div class="terminal-line text-accent">
-              Welcome! Type <span class="cmd-highlight">help</span> to list available commands or click the shortcut buttons below.
+              Welcome! Type <span class="cmd-highlight">help</span> to list available commands or click the shortcut
+              buttons below.
             </div>
           </div>
 
@@ -940,7 +994,8 @@
           <!-- Terminal Input Row -->
           <div class="terminal-input-row">
             <span class="terminal-prompt">maruf@dev:~$</span>
-            <input type="text" id="terminal-input" class="terminal-input" placeholder="Type command here..." autocomplete="off" spellcheck="false" aria-label="Terminal Command Input">
+            <input type="text" id="terminal-input" class="terminal-input" placeholder="Type command here..."
+              autocomplete="off" spellcheck="false" aria-label="Terminal Command Input">
             <button id="terminal-submit-btn" class="terminal-send-btn" aria-label="Run command">
               <i class="fa-solid fa-arrow-turn-down fa-rotate-90"></i>
             </button>
@@ -969,10 +1024,12 @@
               <i class="fa-solid fa-star"></i>
             </div>
             <p class="testimonial-quote">
-              "Maruf transformed our outdated dashboard into an ultra-modern, blazing-fast product. His eye for detail and mastery of frontend performance is truly world-class."
+              "Maruf transformed our outdated dashboard into an ultra-modern, blazing-fast product. His eye for detail
+              and mastery of frontend performance is truly world-class."
             </p>
             <div class="testimonial-author">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="David Sterling" class="author-avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+                alt="David Sterling" class="author-avatar">
               <div class="author-info">
                 <h4 class="author-name">David Sterling</h4>
                 <span class="author-role">VP of Product, CloudScale</span>
@@ -990,10 +1047,12 @@
               <i class="fa-solid fa-star"></i>
             </div>
             <p class="testimonial-quote">
-              "Working with Maruf was seamless. He not only wrote clean, maintainable code, but he actively contributed ideas to improve the user onboarding flow. Highly recommended!"
+              "Working with Maruf was seamless. He not only wrote clean, maintainable code, but he actively contributed
+              ideas to improve the user onboarding flow. Highly recommended!"
             </p>
             <div class="testimonial-author">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Elena Rostova" class="author-avatar">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80"
+                alt="Elena Rostova" class="author-avatar">
               <div class="author-info">
                 <h4 class="author-name">Elena Rostova</h4>
                 <span class="author-role">Founder & CEO, ArtFlow AI</span>
@@ -1011,10 +1070,12 @@
               <i class="fa-solid fa-star"></i>
             </div>
             <p class="testimonial-quote">
-              "Exceptional technical depth paired with sharp aesthetic taste. He delivered our e-commerce frontend two weeks ahead of schedule with 99+ Lighthouse metrics."
+              "Exceptional technical depth paired with sharp aesthetic taste. He delivered our e-commerce frontend two
+              weeks ahead of schedule with 99+ Lighthouse metrics."
             </p>
             <div class="testimonial-author">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Marcus Chen" class="author-avatar">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
+                alt="Marcus Chen" class="author-avatar">
               <div class="author-info">
                 <h4 class="author-name">Marcus Chen</h4>
                 <span class="author-role">Engineering Lead, Nexus Group</span>
@@ -1031,7 +1092,8 @@
         <div class="section-header text-center">
           <span class="section-tag"><i class="fa-regular fa-paper-plane"></i> Get In Touch</span>
           <h2 class="section-title">Let’s build something extraordinary together</h2>
-          <p class="section-desc">Have an exciting idea, an opening on your team, or just want to connect? My inbox is always open.</p>
+          <p class="section-desc">Have an exciting idea, an opening on your team, or just want to connect? My inbox is
+            always open.</p>
         </div>
 
         <div class="contact-grid">
@@ -1049,7 +1111,8 @@
                 <div class="contact-text">
                   <span class="contact-label">Email</span>
                   <div class="copy-email-group">
-                    <a href="mailto:maruf.developer@example.com" class="contact-value" id="email-address">maruf.developer@example.com</a>
+                    <a href="mailto:maruf.developer@example.com" class="contact-value"
+                      id="email-address">maruf.developer@example.com</a>
                     <button class="copy-btn" id="copy-email-btn" title="Copy to clipboard" aria-label="Copy Email">
                       <i class="fa-regular fa-copy"></i>
                     </button>
@@ -1064,7 +1127,8 @@
                 </div>
                 <div class="contact-text">
                   <span class="contact-label">Location & Local Time</span>
-                  <span class="contact-value">Worldwide (Remote) • <span id="local-clock" class="text-accent">Loading time...</span></span>
+                  <span class="contact-value">Worldwide (Remote) • <span id="local-clock" class="text-accent">Loading
+                      time...</span></span>
                 </div>
               </div>
 
@@ -1083,19 +1147,24 @@
               <div class="social-links-container">
                 <span class="social-header">Connect on Socials:</span>
                 <div class="social-icons-group">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="GitHub">
                     <i class="fa-brands fa-github"></i>
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="LinkedIn">
                     <i class="fa-brands fa-linkedin-in"></i>
                   </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="X (Twitter)">
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="X (Twitter)">
                     <i class="fa-brands fa-x-twitter"></i>
                   </a>
-                  <a href="https://codepen.io" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="CodePen">
+                  <a href="https://codepen.io" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="CodePen">
                     <i class="fa-brands fa-codepen"></i>
                   </a>
-                  <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Dribbble">
+                  <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    aria-label="Dribbble">
                     <i class="fa-brands fa-dribbble"></i>
                   </a>
                 </div>
@@ -1122,7 +1191,8 @@
                     <label for="email" class="form-label">Your Email <span class="required">*</span></label>
                     <div class="input-with-icon">
                       <i class="fa-regular fa-envelope input-icon"></i>
-                      <input type="email" id="email" name="email" class="form-input" placeholder="e.g. john@company.com" required>
+                      <input type="email" id="email" name="email" class="form-input" placeholder="e.g. john@company.com"
+                        required>
                     </div>
                     <span class="form-error" id="email-error"></span>
                   </div>
@@ -1132,7 +1202,8 @@
                   <label for="subject" class="form-label">Subject</label>
                   <div class="input-with-icon">
                     <i class="fa-solid fa-tag input-icon"></i>
-                    <input type="text" id="subject" name="subject" class="form-input" placeholder="Project collaboration / Opportunity">
+                    <input type="text" id="subject" name="subject" class="form-input"
+                      placeholder="Project collaboration / Opportunity">
                   </div>
                 </div>
 
@@ -1140,7 +1211,8 @@
                   <label for="message" class="form-label">Your Message <span class="required">*</span></label>
                   <div class="input-with-icon textarea-icon-wrapper">
                     <i class="fa-regular fa-message input-icon"></i>
-                    <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Tell me about your goals, timeline, and vision..." required></textarea>
+                    <textarea id="message" name="message" class="form-textarea" rows="5"
+                      placeholder="Tell me about your goals, timeline, and vision..." required></textarea>
                   </div>
                   <span class="form-error" id="message-error"></span>
                 </div>
@@ -1198,8 +1270,10 @@
                       <stop offset="100%" stop-color="#6366f1" stop-opacity="0.08" />
                     </linearGradient>
                   </defs>
-                  <rect x="2.5" y="2.5" width="37" height="37" rx="11" fill="url(#footerFill)" stroke="url(#footerGrad)" stroke-width="1.8" class="logo-svg-border" />
-                  <path d="M12 29V14.5L21 23.5L30 14.5V29" stroke="url(#footerGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="logo-svg-m" />
+                  <rect x="2.5" y="2.5" width="37" height="37" rx="11" fill="url(#footerFill)" stroke="url(#footerGrad)"
+                    stroke-width="1.8" class="logo-svg-border" />
+                  <path d="M12 29V14.5L21 23.5L30 14.5V29" stroke="url(#footerGrad)" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round" class="logo-svg-m" />
                   <circle cx="21" cy="14" r="2.2" fill="#38bdf8" class="logo-svg-spark" />
                 </svg>
               </div>
@@ -1255,4 +1329,5 @@
   <!-- JavaScript File -->
   <script src="script.js"></script>
 </body>
+
 </html>
