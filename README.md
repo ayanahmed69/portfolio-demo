@@ -82,3 +82,4 @@ If you use VS Code, install the **Live Server** extension, right-click `index.ht
 - **Personal Information**: Open `index.html` and search for "Maruf" to swap in your own name, bio, email, or social profile URLs.
 - **Projects**: Edit the `projectsDatabase` object in `script.js` to customize screenshots, project titles, tech tags, and descriptions.
 - **Color Theme**: Update the CSS custom properties in `style.css` under `:root` to personalize your primary accent colors (default: Indigo `#6366f1` and Cyan `#06b6d4`).
+# portfolio-demo
